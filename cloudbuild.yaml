@@ -9,12 +9,6 @@ steps:
 
   - name: "node:lts-alpine"
     entrypoint: "yarn"
-    args: ["create:env:server"]
-    env:
-      - "MY_SECRET=${_TEST_VAR}"
-
-  - name: "node:lts-alpine"
-    entrypoint: "yarn"
     args: ["build"]
 
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
