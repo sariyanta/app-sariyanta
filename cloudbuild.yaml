@@ -5,8 +5,8 @@ steps:
       - "-c"
       - |
         # Use bash features to manipulate variables
-        UPPERCASE=${_TEST_VAR^^}
-        echo "Original: ${_TEST_VAR}, Uppercase: $UPPERCASE"
+        _UPPERCASE=${_TEST_VAR^^}
+        echo "Original: ${_TEST_VAR}, Uppercase: $_UPPERCASE"
 
   - name: "node:lts-alpine"
     entrypoint: "yarn"
