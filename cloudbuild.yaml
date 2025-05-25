@@ -1,8 +1,10 @@
 steps:
   - name: "node:lts-alpine"
     script: |
-      echo MY_SECRET=${_TEST_VAR} >> ./apps/server/.env
+      echo MY_SECRET=${MY_SECRET} >> ./apps/server/.env
       cat ./apps/server/.env
+    substitutions:
+      _TEST_VAR: ${_TEST_VAR}
 
   - name: "node:lts-alpine"
     entrypoint: "yarn"
