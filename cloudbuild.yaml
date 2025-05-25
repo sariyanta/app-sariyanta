@@ -1,15 +1,15 @@
 steps:
   - name: 'node:lts-alpine'
-    entrypoint: 'npm'
-    args: ['install', '-g', 'pnpm@10.10.0 @nestjs/cli']
+    entrypoint: 'yarn'
+    args: ['install', '-g', '@nestjs/cli']
 
   - name: 'node:lts-alpine'
-    entrypoint: 'npm'
+    entrypoint: 'yarn'
     args: ['install',]
 
   - name: 'node:lts-alpine'
-    entrypoint: 'npm'
-    args: ['run', 'build']
+    entrypoint: 'yarn'
+    args: ['build']
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'bash'
