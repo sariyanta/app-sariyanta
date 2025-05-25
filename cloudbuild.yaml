@@ -1,15 +1,16 @@
 steps:
   - name: "node:lts-alpine"
+    script: |
+      echo MY_SECRET=${_TEST_VAR} >> ./apps/server/.env
+      cat ./apps/server/.env
+
+  - name: "node:lts-alpine"
     entrypoint: "yarn"
     args: ["global", "add", "@nestjs/cli"]
 
   - name: "node:lts-alpine"
     entrypoint: "yarn"
     args: ["install"]
-
-  - name: "node:lts-alpine"
-    script: |
-      echo MY_SECRET=${_TEST_VAR} > ./apps/server/.env
 
   - name: "node:lts-alpine"
     entrypoint: "yarn"

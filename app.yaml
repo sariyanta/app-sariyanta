@@ -3,5 +3,3 @@ env: standard
 automatic_scaling:
   min_instances: 2
   max_instances: 2
-env_variables:
-  MY_SECRET: ${_TEST_VAR}
