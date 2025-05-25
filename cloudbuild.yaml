@@ -3,8 +3,6 @@ steps:
     script: |
       echo MY_SECRET=${MY_SECRET} >> ./apps/server/.env
       cat ./apps/server/.env
-    substitutions:
-      _TEST_VAR: ${_TEST_VAR}
 
   - name: "node:lts-alpine"
     entrypoint: "yarn"
@@ -24,3 +22,6 @@ steps:
 
 options:
   logging: CLOUD_LOGGING_ONLY
+
+substitutions:
+  _TEST_VAR: ${_TEST_VAR}
