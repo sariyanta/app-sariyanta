@@ -1,7 +1,7 @@
 steps:
   - name: 'node:lts-alpine'
     entrypoint: 'npm'
-    args: ['install', '-g', 'pnpm@pnpm@10.10.0']
+    args: ['install', '-g', 'pnpm@10.10.0']
 
   - name: 'node:lts-alpine'
     entrypoint: 'pnpm'
