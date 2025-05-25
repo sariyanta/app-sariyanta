@@ -1,13 +1,17 @@
 steps:
-  - name: 'node'
+  - name: 'node:lts-alpine'
+    entrypoint: 'npm'
+    args: ['install', '-g', 'pnpm@pnpm@10.10.0']
+
+  - name: 'node:lts-alpine'
     entrypoint: 'pnpm'
     args: ['add', '-g', '@nestjs/cli']
 
-  - name: 'node'
+  - name: 'node:lts-alpine'
     entrypoint: 'pnpm'
     args: ['install']
 
-  - name: 'node'
+  - name: 'node:lts-alpine'
     entrypoint: 'pnpm'
     args: ['build']
 
