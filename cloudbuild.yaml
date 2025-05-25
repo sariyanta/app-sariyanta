@@ -4,9 +4,11 @@ steps:
     args:
       - "-c"
       - |
-        # Use bash features to manipulate variables
-        _UPPERCASE=${_TEST_VAR^^}
+        # Set environment variable to app
+        touch /workspace/apps/server/.env
+        echo "_TEST_VAR=${_TEST_VAR}" > /workspace/apps/server/.env
         echo "Original: ${_TEST_VAR}, Uppercase: $_UPPERCASE"
+        cat /workspace/apps/server/.env
 
   - name: "node:lts-alpine"
     entrypoint: "yarn"
