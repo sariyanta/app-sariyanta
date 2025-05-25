@@ -1,9 +1,12 @@
 steps:
-  - name: "node:lts-alpine"
-    script: |
-      touch ./apps/server/.env
-      echo MY_SECRET=$_TEST_VAR >> ./apps/server/.env
-      cat ./apps/server/.env
+  - name: "bash"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        # Use bash features to manipulate variables
+        UPPERCASE=${_TEST_VAR^^}
+        echo "Original: ${_TEST_VAR}, Uppercase: $UPPERCASE"
 
   - name: "node:lts-alpine"
     entrypoint: "yarn"
