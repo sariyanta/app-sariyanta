@@ -1,19 +1,19 @@
 steps:
-  - name: 'node:lts-alpine'
-    entrypoint: 'yarn'
-    args: ['install', '-g', '@nestjs/cli']
+  - name: "node:lts-alpine"
+    entrypoint: "yarn"
+    args: ["global", "add", "@nestjs/cli"]
 
-  - name: 'node:lts-alpine'
-    entrypoint: 'yarn'
-    args: ['install',]
+  - name: "node:lts-alpine"
+    entrypoint: "yarn"
+    args: ["install"]
 
-  - name: 'node:lts-alpine'
-    entrypoint: 'yarn'
-    args: ['build']
+  - name: "node:lts-alpine"
+    entrypoint: "yarn"
+    args: ["build"]
 
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'bash'
-    args: ['-c', 'gcloud app deploy --quiet']
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "bash"
+    args: ["-c", "gcloud app deploy --quiet"]
 
 options:
   logging: CLOUD_LOGGING_ONLY
