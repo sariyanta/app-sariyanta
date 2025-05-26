@@ -9,6 +9,8 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "start": "yarn workspace server start",
+    "test": "yarn workspaces run test",
+    "test:e2e": "yarn workspaces run test:e2e",
     "start:dev": "yarn workspace server start:dev",
     "create:env:server": "printenv > ./apps/server/.env"
   },
