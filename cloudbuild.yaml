@@ -5,10 +5,9 @@ steps:
       - "-c"
       - |
         # Set environment variable to app
-        touch /workspace/apps/server/.env
-        echo "MY_SECRET=${_TEST_VAR}" >> /workspace/apps/server/.env
-        echo "Original: ${_TEST_VAR}, Uppercase: $_UPPERCASE"
-        cat /workspace/apps/server/.env
+        touch .env
+        echo "MY_SECRET=${_TEST_VAR}" >> .env
+        cat .env
 
   - name: "node:lts-alpine"
     entrypoint: "yarn"
