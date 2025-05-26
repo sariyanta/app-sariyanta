@@ -1,5 +1,5 @@
 steps:
-  - name: "note:lts-alpine"
+  - name: "node:lts-alpine"
     entrypoint: "bash"
     args:
       - "-c"
