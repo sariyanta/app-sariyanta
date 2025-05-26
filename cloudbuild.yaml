@@ -4,7 +4,6 @@ steps:
     args:
       - "-c"
       - |
-        yarn global add @nestjs/cli && \
         yarn install && \
         touch ./apps/server/.env && \
         echo "MY_SECRET=${_TEST_VAR}" >> ./apps/server/.env && \
