@@ -7,8 +7,8 @@ steps:
         # Set environment variable to app
         yarn global add @nestjs/cli && \
         yarn install && \
-        touch .env && \
-        echo "MY_SECRET=${_TEST_VAR}" >> .env && \
+        touch ./apps/server/.env && \
+        echo "MY_SECRET=${_TEST_VAR}" >> ./apps/server/.env && \
         yarn build
 
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
