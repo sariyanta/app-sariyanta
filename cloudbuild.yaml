@@ -1,25 +1,15 @@
 steps:
-  - name: "bash"
+  - name: "note:lts-alpine"
     entrypoint: "bash"
     args:
       - "-c"
       - |
         # Set environment variable to app
-        touch .env
-        echo "MY_SECRET=${_TEST_VAR}" >> .env
-        cat .env
-
-  - name: "node:lts-alpine"
-    entrypoint: "yarn"
-    args: ["global", "add", "@nestjs/cli"]
-
-  - name: "node:lts-alpine"
-    entrypoint: "yarn"
-    args: ["install"]
-
-  - name: "node:lts-alpine"
-    entrypoint: "yarn"
-    args: ["build"]
+        yarn global add @nestjs/cli && \
+        yarn install && \
+        touch .env && \
+        echo "MY_SECRET=${_TEST_VAR}" >> .env && \
+        yarn build
 
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: "bash"
