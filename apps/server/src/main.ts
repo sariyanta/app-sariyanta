@@ -6,9 +6,14 @@ import { CONFIG_PROVIDER, TConfig } from './config/configuration';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const globalPrefix = 'api';
+  app.setGlobalPrefix(globalPrefix);
   const { PORT } = app.get<TConfig>(CONFIG_PROVIDER);
   await app.listen(PORT);
-  Logger.log(`Server is running on http://localhost:${PORT}`);
+  Logger.log(
+    `Server is running on http://localhost:${PORT}/${globalPrefix}`,
+    'Bootstrap',
+  );
 }
 bootstrap().catch((error) => {
   Logger.error('Error starting the server', error);
