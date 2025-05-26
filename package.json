@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "build": "yarn workspaces run build",
-    "start": "yarn workspace server start",
+    "start": "yarn workspace server start:prod",
     "dev": "yarn workspaces run dev",
     "test": "yarn workspaces run test",
     "test:e2e": "yarn workspaces run test:e2e",
