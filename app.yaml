@@ -3,3 +3,55 @@ env: standard
 automatic_scaling:
   min_instances: 2
   max_instances: 2
+
+handlers:
+  # Serve static files with caching
+  - url: /(.*\.(gif|png|jpg|ico|txt|json|woff|woff2|ttf|eot|svg))$
+    static_files: dist/\1
+    upload: dist/.*\.(gif|png|jpg|ico|txt|json|woff|woff2|ttf|eot|svg)$
+    secure: always
+    http_headers:
+      X-Content-Type-Options: nosniff
+      X-Frame-Options: DENY
+      Cache-Control: public, max-age=31536000
+
+  # Serve JavaScript files with caching
+  - url: /(.*\.js)$
+    static_files: dist/\1
+    upload: dist/.*\.js$
+    secure: always
+    http_headers:
+      X-Content-Type-Options: nosniff
+      X-Frame-Options: DENY
+      Cache-Control: public, max-age=31536000
+
+  # Serve CSS files with caching
+  - url: /(.*\.css)$
+    static_files: dist/\1
+    upload: dist/.*\.css$
+    secure: always
+    http_headers:
+      X-Content-Type-Options: nosniff
+      X-Frame-Options: DENY
+      Cache-Control: public, max-age=31536000
+
+  # Serve all other static files
+  - url: /(.*)$
+    static_files: dist/\1
+    upload: dist/.*$
+    secure: always
+    http_headers:
+      X-Content-Type-Options: nosniff
+      X-Frame-Options: DENY
+      Cache-Control: public, max-age=3600
+
+# Enable CDN
+env_variables:
+  ENABLE_CDN: 'true'
+
+# Configure CDN
+cdn:
+  enabled: true
+  default_ttl: 3600s
+  max_ttl: 86400s
+  serve_while_stale: true
