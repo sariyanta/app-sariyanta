@@ -6935,7 +6935,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:^3.6.0":
+"chokidar@npm:^3.5.3, chokidar@npm:^3.6.0":
   version: 3.6.0
   resolution: "chokidar@npm:3.6.0"
   dependencies:
@@ -8810,6 +8810,17 @@ __metadata:
     jsonfile: "npm:^6.0.1"
     universalify: "npm:^2.0.0"
   checksum: 10c0/5f579466e7109719d162a9249abbeffe7f426eb133ea486e020b89bc6d67a741134076bf439983f2eb79276ceaf6bd7b7c1e43c3fd67fe889863e69072fb0a5e
+  languageName: node
+  linkType: hard
+
+"fs-extra@npm:^11.3.0":
+  version: 11.3.0
+  resolution: "fs-extra@npm:11.3.0"
+  dependencies:
+    graceful-fs: "npm:^4.2.0"
+    jsonfile: "npm:^6.0.1"
+    universalify: "npm:^2.0.0"
+  checksum: 10c0/5f95e996186ff45463059feb115a22fb048bdaf7e487ecee8a8646c78ed8fdca63630e3077d4c16ce677051f5e60d3355a06f3cd61f3ca43f48cc58822a44d0a
   languageName: node
   linkType: hard
 
@@ -11567,7 +11578,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"p-map@npm:^7.0.2":
+"p-map@npm:^7.0.2, p-map@npm:^7.0.3":
   version: 7.0.3
   resolution: "p-map@npm:7.0.3"
   checksum: 10c0/46091610da2b38ce47bcd1d8b4835a6fa4e832848a6682cf1652bc93915770f4617afc844c10a77d1b3e56d2472bb2d5622353fa3ead01a7f42b04fc8e744a5c
@@ -12570,6 +12581,7 @@ __metadata:
     prettier-plugin-tailwindcss: "npm:^0.6.11"
     typescript-eslint: "npm:^8.20.0"
     vite: "npm:^6.0.0"
+    vite-plugin-static-copy: "npm:^3.0.0"
     vitest: "npm:^3.0.0"
   languageName: unknown
   linkType: soft
@@ -14224,6 +14236,21 @@ __metadata:
   bin:
     vite-node: vite-node.mjs
   checksum: 10c0/2fc71ddadd308b19b0d0dc09f5b9a108ea9bb640ec5fbd6179267994da8fd6c9d6a4c92098af7de73a0fa817055b518b28972452a2f19a1be754e79947e289d2
+  languageName: node
+  linkType: hard
+
+"vite-plugin-static-copy@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "vite-plugin-static-copy@npm:3.0.0"
+  dependencies:
+    chokidar: "npm:^3.5.3"
+    fs-extra: "npm:^11.3.0"
+    p-map: "npm:^7.0.3"
+    picocolors: "npm:^1.1.1"
+    tinyglobby: "npm:^0.2.13"
+  peerDependencies:
+    vite: ^5.0.0 || ^6.0.0
+  checksum: 10c0/893ff379da3c778dd6f6001189bde0bd79c9432424ac46ec5f91976715eef310eae7683995d0d362e3b55ba48b1140bcd266c0d7966f734349fb478a74f457c0
   languageName: node
   linkType: hard
 

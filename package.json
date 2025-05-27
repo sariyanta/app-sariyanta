@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "build": "yarn workspaces foreach -A --parallel -i run build",
-    "start": "yarn workspace server start:prod",
+    "start": "node dist/main",
     "dev": "yarn workspaces foreach -A --parallel -i run dev",
     "test": "yarn workspaces run test",
     "test:e2e": "yarn workspaces run test:e2e"
@@ -42,8 +42,8 @@
     "prettier-plugin-tailwindcss": "^0.6.11",
     "typescript-eslint": "^8.20.0",
     "vite": "^6.0.0",
+    "vite-plugin-static-copy": "^3.0.0",
     "vitest": "^3.0.0"
   },
-  "packageManager": "yarn@4.9.1",
-  "type": "module"
+  "packageManager": "yarn@4.9.1"
 }
