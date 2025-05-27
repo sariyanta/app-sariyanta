@@ -3,10 +3,11 @@ import { createFileRoute } from '@tanstack/react-router';
 export const Route = createFileRoute('/')({
   component: App,
   head: () => ({
+    title: 'NestJS + React on Google App Engine',
     meta: [
       {
-        title: 'NestJS + React on Google App Engine',
-        description:
+        name: 'description',
+        content:
           'A simple application demonstrating NestJS and React deployed on Google App Engine.',
       },
     ],
@@ -15,11 +16,15 @@ export const Route = createFileRoute('/')({
 
 function App() {
   return (
-    <section className="flex h-screen flex-col items-center justify-center">
-      <div className="container mx-auto">
-        <h1 className="text-center text-3xl font-bold">
-          NestJS + React deployed on Google App Engine
-        </h1>
+    <section className="transform-all flex h-screen flex-col transition-all lg:pt-8">
+      <div className="mx-auto w-full max-w-5xl px-6">
+        <header className="py-6">
+          <h1 className="text-2xl font-bold">Twenty Twelve</h1>
+          <p className="text-sm">
+            The 2012 theme for Wordpress is fully responsive theme that looks
+            great on any device.
+          </p>
+        </header>
       </div>
     </section>
   );

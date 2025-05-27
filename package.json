@@ -11,8 +11,7 @@
     "start": "yarn workspace server start:prod",
     "dev": "yarn workspaces foreach -A --parallel -i run dev",
     "test": "yarn workspaces run test",
-    "test:e2e": "yarn workspaces run test:e2e",
-    "create:env:server": "printenv > ./apps/server/.env"
+    "test:e2e": "yarn workspaces run test:e2e"
   },
   "workspaces": [
     "apps/*"
