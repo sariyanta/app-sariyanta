@@ -1,4 +1,4 @@
-Welcome to your new TanStack app! 
+Welcome to your new TanStack app!
 
 # Getting Started
 
@@ -6,7 +6,7 @@ To run this application:
 
 ```bash
 yarn install
-yarn run start  
+yarn run start
 ```
 
 # Building For Production
@@ -29,9 +29,7 @@ yarn run test
 
 This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
 
-
 ## Linting & Formatting
-
 
 This project uses [eslint](https://eslint.org/) and [prettier](https://prettier.io/) for linting and formatting. Eslint is configured using [tanstack/eslint-config](https://tanstack.com/config/latest/docs/eslint). The following scripts are available:
 
@@ -41,7 +39,6 @@ yarn run format
 yarn run check
 ```
 
-
 ## Shadcn
 
 Add components using the latest version of [Shadcn](https://ui.shadcn.com/).
@@ -49,7 +46,6 @@ Add components using the latest version of [Shadcn](https://ui.shadcn.com/).
 ```bash
 pnpx shadcn@latest add button
 ```
-
 
 ## T3Env
 
@@ -60,17 +56,13 @@ pnpx shadcn@latest add button
 ### Usage
 
 ```ts
-import { env } from "@/env";
+import { env } from '@/env';
 
 console.log(env.VITE_APP_TITLE);
 ```
 
-
-
-
-
-
 ## Routing
+
 This project uses [TanStack Router](https://tanstack.com/router). The initial setup is a file based router. Which means that the routes are managed as files in `src/routes`.
 
 ### Adding A Route
@@ -86,7 +78,7 @@ Now that you have two routes you can use a `Link` component to navigate between 
 To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
 
 ```tsx
-import { Link } from "@tanstack/react-router";
+import { Link } from '@tanstack/react-router';
 ```
 
 Then anywhere in your JSX you can use it like so:
@@ -130,7 +122,6 @@ export const Route = createRootRoute({
 The `<TanStackRouterDevtools />` component is not required so you can remove it if you don't want it in your layout.
 
 More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
-
 
 ## Data Fetching
 

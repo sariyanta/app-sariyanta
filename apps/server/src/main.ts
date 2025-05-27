@@ -3,7 +3,8 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 import { AppModule } from './app/app.module';
-import { CONFIG_PROVIDER, TConfig } from './config/configuration';
+import { CONFIG_PROVIDER } from './config/configuration';
+import type { TConfig } from './config/configuration';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

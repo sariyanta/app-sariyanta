@@ -6,11 +6,12 @@
     "<THIRD_PARTY_MODULES>",
     "^@nestjs/(.*)$",
     "^@hubspot/(.*)$",
-    "^[./]",
-    "^src/(.*)$"
+    "^[./]"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
+  "importOrderParserPlugins": ["typescript", "decorators-legacy"],
+  "importOrderCombineTypeAndValueImports": true,
   "plugins": [
     "@trivago/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss"

@@ -1,13 +1,12 @@
-import { join } from 'path';
+import { join } from 'node:path';
 
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 
+import configuration, { appConfigSchema } from '../config/configuration';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-
-import configuration, { appConfigSchema } from 'src/config/configuration';
 
 @Module({
   imports: [

@@ -1,17 +1,17 @@
 steps:
-  - name: "node:22"
-    entrypoint: "bash"
+  - name: 'node:22'
+    entrypoint: 'bash'
     args:
-      - "-c"
+      - '-c'
       - |
         yarn install && \
         touch ./apps/server/.env && \
         echo "MY_SECRET=${_TEST_VAR}" >> ./apps/server/.env && \
         yarn build
 
-  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
-    entrypoint: "bash"
-    args: ["-c", "gcloud app deploy --quiet"]
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args: ['-c', 'gcloud app deploy --quiet']
 
 options:
   logging: CLOUD_LOGGING_ONLY
