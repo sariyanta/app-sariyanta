@@ -28,3 +28,4 @@ handlers:
   # Fallback to Node.js server for all other routes
   - url: /.*
     script: auto
+    secure: always
