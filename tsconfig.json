@@ -2,5 +2,9 @@
   "compilerOptions": {
     "moduleResolution": "node",
     "baseUrl": "."
-  }
+  },
+  "references": [
+    { "path": "apps/client/tsconfig.json" },
+    { "path": "apps/server/tsconfig.json" }
+  ]
 }

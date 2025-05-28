@@ -23,6 +23,7 @@ export default [
       'apps/*/dist/',
       'apps/*/node_modules/',
       'vite.config.js',
+      'apps/*/vite.config.js',
       '*.config.js',
       '*.config.mjs',
       '*.config.cjs',
