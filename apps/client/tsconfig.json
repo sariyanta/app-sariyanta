@@ -11,8 +11,7 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "types": ["vite/client"],
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "emitDeclarationOnly": true, // Overrides declaration:true from root if needed
+    "declaration": false, // Explicitly disable declaration generation
     "verbatimModuleSyntax": true,
     "noUncheckedSideEffectImports": true,
     "baseUrl": ".", // Relative to this tsconfig.json

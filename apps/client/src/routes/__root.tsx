@@ -6,7 +6,7 @@ import {
 } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 
-import TanStackQueryLayout from '../integrations/tanstack-query/layout.tsx';
+import TanStackQueryLayout from '../integrations/tanstack-query/layout';
 
 export interface RouterContext {
   queryClient: QueryClient;
