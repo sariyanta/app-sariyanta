@@ -12,6 +12,7 @@
   "importOrderSortSpecifiers": true,
   "importOrderParserPlugins": [
     "typescript",
+    "jsx",
     "decorators-legacy"
   ],
   "plugins": [
