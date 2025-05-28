@@ -1,34 +1,21 @@
 {
+  "extends": "../../tsconfig.json", // Added to extend root config
   "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "eslint.config.js",
-    "prettier.config.js",
-    "vite.config.js"
+    "src" // Include all relevant files from the src directory
   ],
-
   "compilerOptions": {
+    // Client-specific options
     "target": "ES2022",
     "jsx": "react-jsx",
     "module": "ESNext",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "types": ["vite/client"],
-
-    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "emitDeclarationOnly": true,
+    "emitDeclarationOnly": true, // Overrides declaration:true from root if needed
     "verbatimModuleSyntax": true,
-
-    /* Linting */
-    "skipLibCheck": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "composite": true,
-    "baseUrl": ".",
+    "baseUrl": ".", // Relative to this tsconfig.json
     "paths": {
       "@/*": ["./src/*"]
     }
