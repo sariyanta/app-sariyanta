@@ -19,7 +19,7 @@ import { AppService } from './app.service';
       },
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', '..', 'dist'),
+      rootPath: join(__dirname, '..', '..', 'dist', 'public'),
       exclude: ['/api*api'],
     }),
   ],
