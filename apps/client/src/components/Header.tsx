@@ -1,15 +1,17 @@
-import { Link } from '@tanstack/react-router';
+import { Container } from '@/components/Container';
+import { Navigation } from '@/components/Navigation';
 
-export default function Header() {
+export function Header() {
   return (
-    <header className="relative border-b bg-white p-2 text-black">
-      <section className="mx-auto flex w-full max-w-6xl justify-between gap-2">
-        <nav className="flex flex-row">
-          <div className="px-2 font-bold">
-            <Link to="/">Home</Link>
-          </div>
-        </nav>
-      </section>
-    </header>
+    <Container className="px-6">
+      <header className="py-6">
+        <span className="text-3xl font-bold">Made Koder</span>
+        <div>
+          Learning full-stack development and cloud deployment with NestJS and
+          React.
+        </div>
+      </header>
+      <Navigation />
+    </Container>
   );
 }

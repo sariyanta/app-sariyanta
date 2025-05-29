@@ -1,3 +1,4 @@
+import { Container } from '@/components/Container';
 import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/')({
@@ -16,16 +17,10 @@ export const Route = createFileRoute('/')({
 
 function App() {
   return (
-    <section className="transform-all flex h-screen flex-col transition-all lg:pt-8">
-      <div className="mx-auto w-full max-w-5xl px-6">
-        <header className="py-6">
-          <h1 className="text-2xl font-bold">Twenty Twelve</h1>
-          <p className="text-sm">
-            The 2012 theme for Wordpress is fully responsive theme that looks
-            great on any device.
-          </p>
-        </header>
+    <Container>
+      <div className="py-6">
+        <h2>This is the index file</h2>
       </div>
-    </section>
+    </Container>
   );
 }

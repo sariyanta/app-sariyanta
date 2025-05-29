@@ -1,4 +1,13 @@
 {
+  "include": ["src/**/*.ts", "test/**/*.ts", "eslint.config.mjs"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "coverage",
+    "test-results",
+    "jest.config.ts"
+  ],
   "compilerOptions": {
     "module": "commonjs",
     "declaration": true,

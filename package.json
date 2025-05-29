@@ -9,7 +9,7 @@
   "scripts": {
     "build": "yarn workspaces foreach -A --parallel -i run build",
     "start": "node dist/main",
-    "dev": "yarn workspaces foreach -A --parallel -i run dev",
+    "dev": "yarn workspaces foreach -A --parallel -i run dev:watch",
     "test": "yarn workspaces run test",
     "test:e2e": "yarn workspaces run test:e2e",
     "lint": "eslint --ext .ts,.tsx,.js,.jsx --fix",
@@ -27,7 +27,6 @@
     "@nx/web": "20.7.0",
     "@stylistic/eslint-plugin": "^4.4.0",
     "@tanstack/eslint-config": "^0.1.0",
-    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@vitest/ui": "^3.0.0",
     "@yarnpkg/cli": "^4.9.1",
     "@yarnpkg/core": "^4.4.1",
