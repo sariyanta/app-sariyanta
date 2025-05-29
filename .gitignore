@@ -65,3 +65,4 @@ vitest.config.*.timestamp*
 
 .cursor/rules/nx-rules.mdc
 .github/instructions/
+app.yaml
