@@ -4,9 +4,16 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 
-import configuration, { appConfigSchema } from '../config/configuration';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import configuration, {
+  appConfigSchema,
+  CONFIG_PROVIDER,
+  TConfig,
+} from '../config/configuration';
+import { AppController } from './controller/app.controller';
+import { AppService } from './service/app.service';
+import { Client } from '@hubspot/api-client';
+
+export const HUBSPOT_CLIENT = 'HUBSPOT_CLIENT';
 
 @Module({
   imports: [
@@ -24,6 +31,21 @@ import { AppService } from './app.service';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: HUBSPOT_CLIENT,
+      useFactory: (config: TConfig) => {
+        const accessToken = config.HUBSPOT_ACCESS_TOKEN;
+        if (!accessToken) {
+          throw new Error(
+            'HUBSPOT_ACCESS_TOKEN is not defined in the environment variables',
+          );
+        }
+        return new Client({ accessToken });
+      },
+      inject: [CONFIG_PROVIDER],
+    },
+  ],
 })
 export class AppModule {}

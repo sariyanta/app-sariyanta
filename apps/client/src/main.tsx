@@ -6,6 +6,7 @@ import * as TanStackQueryProvider from './integrations/tanstack-query/root-provi
 import reportWebVitals from './reportWebVitals';
 // Import the generated route tree
 import { routeTree } from './routeTree.gen';
+
 import './styles.css';
 
 // Create a new router instance

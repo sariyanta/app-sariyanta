@@ -4,6 +4,9 @@ import { registerAs } from '@nestjs/config';
 
 export const appConfigSchema = z.object({
   PORT: z.coerce.number().default(3000),
+
+  /** HubSpot */
+  HUBSPOT_ACCESS_TOKEN: z.string(),
 });
 
 export const getConfig = () => ({

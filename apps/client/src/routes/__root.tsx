@@ -18,14 +18,13 @@ export interface RouterContext {
 const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
-      <div className="transform-all flex h-screen flex-col transition-all lg:pt-8">
+      <div className="transform-all flex flex-col transition-all lg:pt-8">
         <HeadContent />
         <Header />
-        <main>
-          {children}
-          <Outlet />
-        </main>
+        <main>{children}</main>
       </div>
+      <Outlet />
+
       <TanStackRouterDevtools />
       <TanStackQueryLayout />
     </>
