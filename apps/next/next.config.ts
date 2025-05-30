@@ -1,6 +1,6 @@
 import type { NextConfig } from 'next';
 
-const NEST_SERVER_URL = process.env.NEST_SERVER_URL;
+const NEST_SERVER_URL = process.env.NEST_SERVER_URL || 'http://localhost:4000';
 
 const nextConfig: NextConfig = {
   /* config options here */
