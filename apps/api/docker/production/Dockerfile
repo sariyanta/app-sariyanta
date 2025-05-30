@@ -1,8 +1,6 @@
-###################
-# BUILD FOR LOCAL DEVELOPMENT
-###################
+FROM node:22-alpine AS development
 
-FROM node:22-slim AS development
+RUN apk add --no-cache libc6-compat
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -24,7 +22,8 @@ USER node
 # BUILD FOR PRODUCTION
 ###################
 
-FROM node:22-slim AS build
+FROM node:22-alpine AS build
+
 
 WORKDIR /usr/src/app
 
@@ -50,12 +49,14 @@ USER node
 # PRODUCTION
 ###################
 
-FROM node:22-slim AS production
+FROM node:22-alpine AS production
 
 # Copy the bundled code from the build stage to the production image
 COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
 COPY --chown=node:node --from=build /usr/src/app/dist ./dist
 
+EXPOSE 3000
+ENV PORT=3000 HOSTNAME="0.0.0.0"
+
 # Start the server using the production build
 CMD [ "node", "dist/main.js" ]
-

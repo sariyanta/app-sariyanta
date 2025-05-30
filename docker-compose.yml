@@ -3,8 +3,7 @@ services:
   api:
     build:
       context: apps/api
-      dockerfile: Dockerfile
-      target: development
+      dockerfile: docker/development/Dockerfile
     restart: unless-stopped
     user: root
     command: sh -c 'apt-get update && apt-get install -y procps && npm install && npm run start:dev'
@@ -21,8 +20,7 @@ services:
   www:
     build:
       context: apps/www
-      dockerfile: Dockerfile
-      target: development
+      dockerfile: docker/development/Dockerfile
     user: root
     command: sh -c 'npm install && npm run dev'
     working_dir: /usr/src/app
