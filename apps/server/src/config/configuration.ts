@@ -7,6 +7,7 @@ export const appConfigSchema = z.object({
 
   /** HubSpot */
   HUBSPOT_ACCESS_TOKEN: z.string(),
+  ALLOWED_CORS_HOST: z.string(),
 });
 
 export const getConfig = () => ({

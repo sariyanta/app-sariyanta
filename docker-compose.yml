@@ -13,6 +13,8 @@ services:
       - ./apps/next/.next:/usr/src/app/.next
     ports:
       - '3000:3000'
+    env_file:
+      - apps/next/.env
   nest:
     build:
       context: apps/server
@@ -28,6 +30,8 @@ services:
       - ./apps/server/node_modules:/usr/src/app/node_modules
     ports:
       - '4000:4000'
+    env_file:
+      - apps/server/.env
 
 volumes:
   next:

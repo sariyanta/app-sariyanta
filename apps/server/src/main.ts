@@ -10,9 +10,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
-  app.enableCors({
-    origin: 'http://localhost:3000',
-  });
+
   const options = new DocumentBuilder()
     .setTitle('My API')
     .setDescription('API documentation for my application')
@@ -24,9 +22,13 @@ async function bootstrap() {
   SwaggerModule.setup('api/docs', app, document);
   console.log('stuff');
   const { PORT } = app.get<TConfig>(CONFIG_PROVIDER);
+  const { ALLOWED_CORS_HOST } = app.get<TConfig>(CONFIG_PROVIDER);
+  app.enableCors({
+    origin: ALLOWED_CORS_HOST,
+  });
   await app.listen(PORT);
   Logger.log(
-    `Server is running on http://localhost:${PORT}/${globalPrefix}`,
+    `Server is running on http://0.0.0.0:${PORT}/${globalPrefix}`,
     'Bootstrap',
   );
 }
