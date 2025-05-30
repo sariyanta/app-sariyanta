@@ -4,6 +4,8 @@
 
 FROM node:22-slim AS development
 
+RUN apt-get update && apt-get install -y procps
+
 # Create app directory
 WORKDIR /usr/src/app
 
