@@ -10,7 +10,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
-
+  app.enableCors({
+    origin: 'http://localhost:3000',
+  });
   const options = new DocumentBuilder()
     .setTitle('My API')
     .setDescription('API documentation for my application')
@@ -20,7 +22,7 @@ async function bootstrap() {
     operationIdFactory: (_: string, methodKey: string) => methodKey,
   });
   SwaggerModule.setup('api/docs', app, document);
-
+  console.log('stuff');
   const { PORT } = app.get<TConfig>(CONFIG_PROVIDER);
   await app.listen(PORT);
   Logger.log(

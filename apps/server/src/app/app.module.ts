@@ -1,8 +1,5 @@
-import { join } from 'node:path';
-
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { ServeStaticModule } from '@nestjs/serve-static';
 
 import configuration, {
   appConfigSchema,
@@ -24,10 +21,6 @@ export const HUBSPOT_CLIENT = 'HUBSPOT_CLIENT';
       validationOptions: {
         abortEarly: true,
       },
-    }),
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', '..', 'dist', 'public'),
-      exclude: ['/api*api'],
     }),
   ],
   controllers: [AppController],
