@@ -20,7 +20,6 @@ async function bootstrap() {
     operationIdFactory: (_: string, methodKey: string) => methodKey,
   });
   SwaggerModule.setup('api/docs', app, document);
-  console.log('stuff');
   const { PORT } = app.get<TConfig>(CONFIG_PROVIDER);
   const { ALLOWED_CORS_HOST } = app.get<TConfig>(CONFIG_PROVIDER);
   app.enableCors({

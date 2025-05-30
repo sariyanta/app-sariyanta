@@ -7,8 +7,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "deploy:next": "gcloud config set run/region us-central1 && gcloud run deploy next --source=./apps/next",
-    "deploy:server": "gcloud config set run/region us-central1 && gcloud run deploy server --source=./apps/server"
+    "deploy:www": "gcloud config set run/region us-central1 && gcloud run deploy www --source=./apps/www",
+    "deploy:api": "gcloud config set run/region us-central1 && gcloud run deploy api --source=./apps/api"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
