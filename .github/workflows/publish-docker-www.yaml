@@ -44,7 +44,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: apps/www
-          file: docker/production/Dockerfile
+          file: ./docker/production/Dockerfile
           platforms: linux/amd64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
