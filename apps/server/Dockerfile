@@ -2,7 +2,7 @@
 # BUILD FOR LOCAL DEVELOPMENT
 ###################
 
-FROM node:22-slim AS development
+FROM --platform=linux/amd64 node:22-slim AS development
 
 RUN apt-get update && apt-get install -y procps
 
@@ -26,7 +26,7 @@ USER node
 # BUILD FOR PRODUCTION
 ###################
 
-FROM node:22-slim AS build
+FROM --platform=linux/amd64 node:22-slim AS build
 
 WORKDIR /usr/src/app
 
@@ -52,7 +52,7 @@ USER node
 # PRODUCTION
 ###################
 
-FROM node:22-slim AS production
+FROM --platform=linux/amd64 node:22-slim AS production
 
 # Copy the bundled code from the build stage to the production image
 COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
