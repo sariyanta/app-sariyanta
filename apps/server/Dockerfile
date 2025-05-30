@@ -20,6 +20,7 @@ RUN npm install
 # Bundle app source
 COPY --chown=node:node . .
 
+USER node
 
 ###################
 # BUILD FOR PRODUCTION
