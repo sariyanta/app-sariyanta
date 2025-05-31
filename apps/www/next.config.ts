@@ -1,3 +1,5 @@
+import './src/config/configuration';
+
 import type { NextConfig } from 'next';
 import { configuration } from '@/config/configuration';
 

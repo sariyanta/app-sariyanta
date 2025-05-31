@@ -17,7 +17,8 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 # This will do the trick, use the corresponding env file for each environment.
-COPY .env.production.sample .env.production
+# COPY .env.production.sample .env.production
+ENV SKIP_ENV_VALIDATION=true
 RUN corepack enable pnpm && pnpm build
 
 # 3. Production image, copy all the files and run next
