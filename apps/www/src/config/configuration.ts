@@ -1,4 +1,4 @@
-import { createEnv } from '@t3-oss/env-core';
+import { createEnv } from '@t3-oss/env-nextjs';
 import { z } from 'zod';
 
 export const configuration = createEnv({
@@ -7,19 +7,16 @@ export const configuration = createEnv({
     API_ACCESS_TOKEN: z.string().min(1, 'API key is required'),
   },
 
-  /**
-   * The prefix that client-side variables must have. This is enforced both at
-   * a type-level and at runtime.
-   */
-  clientPrefix: 'PUBLIC_',
-
   client: {},
 
   /**
    * What object holds the environment variables at runtime. This is usually
    * `process.env` or `import.meta.env`.
    */
-  runtimeEnv: process.env,
+  runtimeEnv: {
+    API_ACCESS_TOKEN: process.env.API_ACCESS_TOKEN,
+    API_BASE_URL: process.env.API_BASE_URL,
+  },
 
   /**
    * By default, this library will feed the environment variables directly to

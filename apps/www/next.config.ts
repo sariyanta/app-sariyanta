@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next';
+import { configuration } from '@/config/configuration';
 
-const NEST_SERVER_URL = process.env.NEST_SERVER_URL || 'http://localhost:4000';
+const API_BASE_URL = configuration.API_BASE_URL || 'http://localhost:4000/api';
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -8,7 +9,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: `${NEST_SERVER_URL}/api/:path*`,
+        destination: `${API_BASE_URL}/:path*`,
       },
     ];
   },
