@@ -1,9 +1,6 @@
-import './src/config/configuration';
-
 import type { NextConfig } from 'next';
-import { configuration } from '@/config/configuration';
 
-const API_BASE_URL = configuration.API_BASE_URL || 'http://localhost:4000/api';
+import { configuration } from './src/config/configuration';
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -11,11 +8,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: `${API_BASE_URL}/:path*`,
+        destination: `${configuration.API_BASE_URL}/:path*`,
       },
     ];
   },
   output: 'standalone',
+  transpilePackages: ['@t3-oss/env-core', '@t3-oss/env-nextjs'],
 };
 
 export default nextConfig;
