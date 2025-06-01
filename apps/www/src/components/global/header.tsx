@@ -1,6 +1,8 @@
-import { Container } from '@/components/ui/container';
-import { NavigationMenuDemo } from '@/components/global/navigation';
 import Link from 'next/link';
+
+import { NavigationMenuDemo } from '@/components/global/navigation';
+import { Container } from '@/components/ui/container';
+
 export const Header = () => {
   return (
     <header>

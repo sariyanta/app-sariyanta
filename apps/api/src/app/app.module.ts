@@ -6,9 +6,9 @@ import configuration, {
   CONFIG_PROVIDER,
   TConfig,
 } from '../config/configuration';
-import { AppController } from './controller/app.controller';
 import { AppService } from './service/app.service';
 import { Client } from '@hubspot/api-client';
+import { AppController } from './controller/app.controller';
 
 export const HUBSPOT_CLIENT = 'HUBSPOT_CLIENT';
 
