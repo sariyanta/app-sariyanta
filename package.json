@@ -13,11 +13,13 @@
     "deploy:www": "gcloud config set run/region us-central1 && gcloud run deploy www --source=./apps/www",
     "deploy:api": "gcloud config set run/region us-central1 && gcloud run deploy api --source=./apps/api",
     "docker:build:www": "docker build -t sariyanta/app-sariyanta-www --platform=linux/amd64 -f apps/www/docker/production/Dockerfile apps/www",
-    "docker:build:api": "docker build -t sariyanta/app-sariyanta-api --platform=linux/amd64 -f apps/api/docker/production/Dockerfile apps/api"
+    "docker:build:api": "docker build -t sariyanta/app-sariyanta-api --platform=linux/amd64 -f apps/api/docker/production/Dockerfile apps/api",
+    "generate:openapi": "openapi-generator-cli generate -i /local/packages/api-client/src/openapi.json -g typescript-axios -o /local/packages/api-client/src --additional-properties=useSingleRequestParameter=true,withSeparateModelsAndApi=true,modelPropertyNaming=original,apiPackage=clients,modelPackage=models"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "^9.18.0",
+    "@openapitools/openapi-generator-cli": "^2.20.2",
     "@stylistic/eslint-plugin": "^4.4.0",
     "@typescript-eslint/eslint-plugin": "^8.33.0",
     "eslint": "^9.18.0",

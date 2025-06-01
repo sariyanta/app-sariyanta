@@ -1,0 +1,15 @@
+{
+    "name": "api-client",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/sariyanta/app-sariyanta-nestjs.git",
+    "author": "Desar <desar@sariyanta.com>",
+    "license": "MIT",
+    "private": true,
+    "exports": {
+        ".": "./src/index.ts"
+    },
+    "peerDependencies": {
+        "axios": "^1.9.0"
+    }
+}

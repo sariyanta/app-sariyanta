@@ -1,2 +1,6 @@
 packages:
-  - 'apps/*'
+  - apps/*
+  - packages/*
+onlyBuiltDependencies:
+  - '@nestjs/core'
+  - '@openapitools/openapi-generator-cli'

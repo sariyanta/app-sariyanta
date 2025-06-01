@@ -26,6 +26,7 @@ const eslintConfig = [
     rules: {
       'no-html-link-for-pages': 'off',
       'sort-imports': 'off', // Disable basic sort-imports
+      'import/no-unresolved': 'off', // Disable unresolved imports
       'import/order': [
         'error',
         {

@@ -1,6 +1,7 @@
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { DocumentBuilder } from '@nestjs/swagger';
+import { OpenApiNestFactory } from 'nest-openapi-tools';
 
 import { AppModule } from './app/app.module';
 import { HttpTimingInterceptor } from './app/interceptor/http-timing.interceptor';
@@ -22,17 +23,30 @@ async function bootstrap() {
   });
 
   /** Swagger Configuration */
-  const options = new DocumentBuilder()
-    .setTitle('My API')
-    .setDescription('API documentation for my application')
-    .setVersion('1.0')
-    .build();
-
-  const document = SwaggerModule.createDocument(app, options, {
-    operationIdFactory: (_: string, methodKey: string) => methodKey,
-  });
-
-  SwaggerModule.setup('api/docs', app, document);
+  await OpenApiNestFactory.configure(
+    app,
+    new DocumentBuilder().setTitle('Sariyanta API'),
+    {
+      webServerOptions: {
+        enabled: false,
+        path: `${globalPrefix}/docs`,
+      },
+      fileGeneratorOptions: {
+        enabled: true,
+        outputFilePath: '../../packages/api-client/src/openapi.json',
+      },
+    },
+    {
+      operationIdFactory: (c: string, method: string) => method,
+    },
+  )
+    .then(() => {
+      Logger.log('Swagger documentation generated successfully', 'OpenAPI');
+    })
+    .catch((error) => {
+      Logger.error('Error configuring Swagger', error);
+      process.exit(1);
+    });
 
   await app.listen(PORT);
   Logger.log(

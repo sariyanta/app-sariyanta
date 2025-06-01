@@ -1,0 +1,67 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/api": {
+            "get": {
+                "operationId": "ping",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "App"
+                ]
+            }
+        },
+        "/api/posts/{slug}": {
+            "get": {
+                "operationId": "getPost",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "posts"
+                ]
+            }
+        },
+        "/api/posts": {
+            "get": {
+                "operationId": "getPosts",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "posts"
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "Sariyanta API",
+        "description": "",
+        "version": "1.0.0",
+        "contact": {}
+    },
+    "tags": [],
+    "servers": [],
+    "components": {
+        "schemas": {}
+    }
+}

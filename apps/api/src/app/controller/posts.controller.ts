@@ -7,16 +7,18 @@ import {
   NotFoundException,
   Param,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 
 import { PostsService } from '../service/posts.service';
 
-@Controller()
+@ApiTags('posts')
+@Controller('posts')
 export class PostsController {
   private readonly logger = new Logger(PostsController.name);
   private readonly hubspotClient: Client;
   constructor(private readonly postService: PostsService) {}
 
-  @Get('posts/:slug')
+  @Get(':slug')
   async getPost(@Param('slug') slug: string) {
     try {
       const post = await this.postService.getPostBySlug(slug);
@@ -34,16 +36,15 @@ export class PostsController {
     }
   }
 
-  @Get('posts')
+  @Get()
   async getPosts() {
     try {
-      const postsResponse =
-        await this.hubspotClient.cms.blogs.blogPosts.basicApi.getPage();
-      if (!postsResponse?.results?.length) {
+      const postsResponse = await this.postService.getPosts();
+      if (!postsResponse?.length) {
         this.logger.warn('No posts found');
         return [];
       }
-      return postsResponse.results.filter((post) => post.currentlyPublished);
+      return postsResponse;
     } catch (error) {
       this.logger.error('Failed to fetch posts', error);
       throw error;
