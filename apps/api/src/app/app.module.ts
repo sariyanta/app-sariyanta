@@ -1,18 +1,21 @@
+import { Client } from '@hubspot/api-client';
+import { HttpModule } from '@nestjs/axios';
+import { CacheModule, CacheInterceptor } from '@nestjs/cache-manager';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { CacheModule, CacheInterceptor } from '@nestjs/cache-manager';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 
+import { AppService } from '../app/service/app.service';
 import configuration, {
   appConfigSchema,
   CONFIG_PROVIDER,
   TConfig,
 } from '../config/configuration';
-import { AppService } from './service/app.service';
-import { Client } from '@hubspot/api-client';
-import { AppController } from './controller/app.controller';
 
-export const HUBSPOT_CLIENT = 'HUBSPOT_CLIENT';
+import { HUBSPOT_CLIENT } from './constant/hubspot.constant';
+import { AppController } from './controller/app.controller';
+import { PostsController } from './controller/posts.controller';
+import { PostsService } from './service/posts.service';
 
 @Module({
   imports: [
@@ -28,10 +31,14 @@ export const HUBSPOT_CLIENT = 'HUBSPOT_CLIENT';
         abortEarly: true,
       },
     }),
+    HttpModule.register({
+      timeout: 3000,
+    }),
   ],
-  controllers: [AppController],
+  controllers: [AppController, PostsController],
   providers: [
     AppService,
+    PostsService,
     {
       provide: HUBSPOT_CLIENT,
       useFactory: (config: TConfig) => {
