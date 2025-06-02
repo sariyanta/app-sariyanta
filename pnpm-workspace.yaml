@@ -4,3 +4,8 @@ packages:
 onlyBuiltDependencies:
   - '@nestjs/core'
   - '@openapitools/openapi-generator-cli'
+  - '@scarf/scarf'
+  - '@swc/core'
+  - '@tailwindcss/oxide'
+  - sharp
+  - unrs-resolver

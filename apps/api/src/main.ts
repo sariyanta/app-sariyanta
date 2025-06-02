@@ -12,42 +12,37 @@ async function bootstrap() {
 
   /** Get the Configs */
   const { PORT } = app.get<TConfig>(CONFIG_PROVIDER);
-  const { ALLOWED_CORS_HOST } = app.get<TConfig>(CONFIG_PROVIDER);
+  const { ALLOWED_CORS_ORIGIN, NODE_ENV } = app.get<TConfig>(CONFIG_PROVIDER);
 
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
   app.useGlobalInterceptors(new HttpTimingInterceptor());
 
   app.enableCors({
-    origin: ALLOWED_CORS_HOST,
+    origin: ALLOWED_CORS_ORIGIN,
   });
 
   /** Swagger Configuration */
-  await OpenApiNestFactory.configure(
-    app,
-    new DocumentBuilder().setTitle('Sariyanta API'),
-    {
-      webServerOptions: {
-        enabled: false,
-        path: `${globalPrefix}/docs`,
-      },
-      fileGeneratorOptions: {
-        enabled: true,
-        outputFilePath: '../../packages/api-client/src/openapi.json',
-      },
-    },
-    {
-      operationIdFactory: (c: string, method: string) => method,
-    },
-  )
-    .then(() => {
-      Logger.log('Swagger documentation generated successfully', 'OpenAPI');
-    })
-    .catch((error) => {
-      Logger.error('Error configuring Swagger', error);
-      process.exit(1);
-    });
+  const document = new DocumentBuilder()
+    .setTitle('Sariyanta API')
+    .addBearerAuth();
 
+  const openApiOptions = {
+    webServerOptions: {
+      enabled: true,
+      path: `${globalPrefix}/docs`,
+    },
+    fileGeneratorOptions: {
+      enabled: NODE_ENV !== 'production',
+      outputFilePath: '../../packages/api-client/src/openapi.json',
+    },
+  };
+
+  await OpenApiNestFactory.configure(app, document, openApiOptions, {
+    operationIdFactory: (_: string, method: string) => method,
+  });
+
+  /** Start the Application */
   await app.listen(PORT);
   Logger.log(
     `Server is running on http://0.0.0.0:${PORT}/${globalPrefix}`,

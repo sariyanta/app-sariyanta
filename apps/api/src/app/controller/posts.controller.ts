@@ -1,4 +1,3 @@
-import { Client } from '@hubspot/api-client';
 import {
   Controller,
   Get,
@@ -15,7 +14,6 @@ import { PostsService } from '../service/posts.service';
 @Controller('posts')
 export class PostsController {
   private readonly logger = new Logger(PostsController.name);
-  private readonly hubspotClient: Client;
   constructor(private readonly postService: PostsService) {}
 
   @Get(':slug')
@@ -49,5 +47,10 @@ export class PostsController {
       this.logger.error('Failed to fetch posts', error);
       throw error;
     }
+  }
+
+  @Get('search-deals')
+  async searchDeals() {
+    return this.postService.searchDeals();
   }
 }

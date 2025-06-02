@@ -3,10 +3,11 @@ import { z } from 'zod';
 
 export const appConfigSchema = z.object({
   PORT: z.coerce.number().default(3000),
+  NODE_ENV: z.enum(['development', 'production']).default('development'),
+  ALLOWED_CORS_ORIGIN: z.string(),
 
   /** HubSpot */
   HUBSPOT_ACCESS_TOKEN: z.string(),
-  ALLOWED_CORS_HOST: z.string(),
 });
 
 export const getConfig = () => ({
