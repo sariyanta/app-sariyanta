@@ -1,0 +1,39 @@
+FROM node:22-alpine AS base
+
+RUN apk add --no-cache libc6-compat
+RUN npm install -g pnpm
+WORKDIR /app
+
+FROM base AS builder
+# Copy workspace files
+COPY pnpm-workspace.yaml package.json pnpm-lock.yaml ./
+COPY packages/ ./packages/
+COPY apps/api/ ./apps/api/
+
+# Install and build
+RUN pnpm install --frozen-lockfile
+RUN pnpm --filter "./packages/*" build
+RUN pnpm --filter api build
+
+# Production stage
+FROM node:22-alpine AS production
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+RUN addgroup --system --gid 1001 nestjs
+RUN adduser --system --uid 1001 nestjs
+
+# Copy only the built app and package.json
+COPY --from=builder --chown=nestjs:nestjs /app/apps/api/dist ./dist
+COPY --from=builder --chown=nestjs:nestjs /app/apps/api/package.json ./package.json
+
+# Use npm to install only production dependencies
+# This avoids pnpm workspace complexity
+RUN npm install --omit=dev --legacy-peer-deps && npm cache clean --force
+
+USER nestjs
+EXPOSE 8080
+ENV PORT=8080 HOSTNAME="0.0.0.0"
+
+CMD ["node", "dist/main.js"]

@@ -43,9 +43,9 @@ jobs:
         id: push
         uses: docker/build-push-action@v6
         with:
-          context: apps/api
-          file: apps/api/docker/production/Dockerfile
+          context: .
+          file: docker/dockerapi
           platforms: linux/amd64
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: latest
           labels: ${{ steps.meta.outputs.labels }}

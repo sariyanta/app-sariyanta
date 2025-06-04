@@ -48,9 +48,4 @@ export class PostsController {
       throw error;
     }
   }
-
-  @Get('search-deals')
-  async searchDeals() {
-    return this.postService.searchDeals();
-  }
 }

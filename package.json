@@ -13,7 +13,7 @@
     "deploy:www": "gcloud config set run/region us-central1 && gcloud run deploy www --source=./apps/www",
     "deploy:api": "gcloud config set run/region us-central1 && gcloud run deploy api --source=./apps/api",
     "docker:build:www": "docker build -t sariyanta/app-sariyanta-www --platform=linux/amd64 -f apps/www/docker/production/Dockerfile apps/www",
-    "docker:build:api": "docker build -t sariyanta/app-sariyanta-api --platform=linux/amd64 -f apps/api/docker/production/Dockerfile apps/api",
+    "docker:build:api": "docker build -t us-central1-docker.pkg.dev/sariyanta-dev/ghcr/sariyanta/app-sariyanta-api --platform=linux/amd64 -f docker/dockerapi .",
     "generate:openapi": "openapi-generator-cli generate -i /local/packages/api-client/src/openapi.json -g typescript-axios -o /local/packages/api-client/src --additional-properties=useSingleRequestParameter=true,withSeparateModelsAndApi=true,modelPropertyNaming=original,apiPackage=clients,modelPackage=models"
   },
   "devDependencies": {
