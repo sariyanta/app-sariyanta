@@ -1,0 +1,11 @@
+docker
+node_modules
+npm-debug.log
+dist
+.dockerignore
+.env
+.next
+.cursor
+.github
+.vscode
+.npmrc
