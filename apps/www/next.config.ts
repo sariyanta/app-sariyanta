@@ -1,6 +1,6 @@
 import type { NextConfig } from 'next';
 
-import { configuration } from './src/config/configuration';
+import env from './src/config';
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -8,12 +8,15 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: `${configuration.API_BASE_URL}/:path*`,
+        destination: `${env.API_BASE_URL}/:path*`,
       },
     ];
   },
-  output: 'standalone',
-  transpilePackages: ['@t3-oss/env-core', '@t3-oss/env-nextjs'],
 };
+
+if (!process?.env?.VERCEL) {
+  nextConfig.output = 'standalone';
+  nextConfig.transpilePackages = ['@t3-oss/env-core', '@t3-oss/env-nextjs'];
+}
 
 export default nextConfig;

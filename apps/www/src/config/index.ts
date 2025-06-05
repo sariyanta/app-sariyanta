@@ -1,7 +1,7 @@
 import { createEnv } from '@t3-oss/env-nextjs';
 import { z } from 'zod';
 
-export const configuration = createEnv({
+export default createEnv({
   server: {
     API_BASE_URL: z.string().url().min(1),
     API_ACCESS_TOKEN: z.string().min(1, 'API key is required'),
