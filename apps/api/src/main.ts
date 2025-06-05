@@ -1,7 +1,6 @@
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { DocumentBuilder } from '@nestjs/swagger';
-import { OpenApiNestFactory } from 'nest-openapi-tools';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 import { AppModule } from './app/app.module';
 import { HttpTimingInterceptor } from './app/interceptor/http-timing.interceptor';
@@ -12,7 +11,7 @@ async function bootstrap() {
 
   /** Get the Configs */
   const { PORT } = app.get<TConfig>(CONFIG_PROVIDER);
-  const { ALLOWED_CORS_ORIGIN, NODE_ENV } = app.get<TConfig>(CONFIG_PROVIDER);
+  const { ALLOWED_CORS_ORIGIN } = app.get<TConfig>(CONFIG_PROVIDER);
 
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
@@ -22,25 +21,17 @@ async function bootstrap() {
     origin: ALLOWED_CORS_ORIGIN,
   });
 
-  /** Swagger Configuration */
-  const document = new DocumentBuilder()
-    .setTitle('Sariyanta API')
-    .addBearerAuth();
+  const swaggerConfig = new DocumentBuilder()
+    .setTitle('Yet another API')
+    .setDescription('API documentation for yet another API')
+    .setVersion('1.0')
+    .build();
 
-  const openApiOptions = {
-    webServerOptions: {
-      enabled: true,
-      path: `${globalPrefix}/docs`,
-    },
-    fileGeneratorOptions: {
-      enabled: NODE_ENV !== 'production',
-      outputFilePath: '../../packages/api-client/src/openapi.json',
-    },
-  };
-
-  await OpenApiNestFactory.configure(app, document, openApiOptions, {
+  const document = SwaggerModule.createDocument(app, swaggerConfig, {
     operationIdFactory: (_: string, method: string) => method,
   });
+
+  SwaggerModule.setup('api/docs', app, document);
 
   /** Start the Application */
   await app.listen(PORT);
