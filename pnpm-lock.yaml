@@ -215,9 +215,6 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.16
         version: 0.5.16(tailwindcss@4.1.8)
-      api-client:
-        specifier: workspace:*
-        version: link:../../packages/api-client
       axios:
         specifier: ^1.9.0
         version: 1.9.0
